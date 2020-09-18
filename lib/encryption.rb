@@ -46,4 +46,9 @@ class Encryption
       end
     end
   end
+
+  def new_shifts_array
+    @shifts << @shifts.dup if @shifts.length != letter_index.length
+    @shifts.flatten
+  end
 end
