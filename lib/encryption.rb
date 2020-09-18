@@ -63,4 +63,13 @@ class Encryption
     end
     array
   end
+
+  def translation
+    new_string = ''
+    translation = encode.map do |indx|
+      @alphabet[indx]
+    end.join
+    new_string += translation
+    new_string
+  end
 end
