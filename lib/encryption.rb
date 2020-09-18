@@ -1,6 +1,7 @@
 class Encryption
   attr_reader :message, :key, :date, :alphabet, :non_letters, :shifts,
   :a, :b, :c, :d
+
   def initialize(message, key, date)
     @message = message
     @key = key
@@ -30,5 +31,12 @@ class Encryption
     @b += offset[1].to_i
     @c += offset[2].to_i
     @d += offset[3].to_i
+  end
+
+  def add_shift
+    @shifts << @a
+    @shifts << @b
+    @shifts << @c
+    @shifts << @d
   end
 end
