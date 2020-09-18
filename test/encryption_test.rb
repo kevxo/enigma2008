@@ -48,4 +48,25 @@ class EncryptionTest < Minitest::Test
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
     assert_equal expected, encryption.letter_index
   end
+
+  def test_shifts_length_matches_message_length
+    encryption = Encryption.new('hello world', '02715', '040895')
+
+    encryption.get_keys
+    assert_equal 2, encryption.a
+    assert_equal 27, encryption.b
+    assert_equal 71, encryption.c
+    assert_equal 15, encryption.d
+
+    encryption.get_offsets
+    assert_equal 3, encryption.a
+    assert_equal 27, encryption.b
+    assert_equal 73, encryption.c
+    assert_equal 20, encryption.d
+
+    encryption.add_shift
+    encryption.letter_index
+
+    assert_equal 8, encryption.new_shifts_array.count
+  end
 end
