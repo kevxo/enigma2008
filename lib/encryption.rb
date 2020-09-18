@@ -1,6 +1,6 @@
 class Encryption
   attr_reader :message, :key, :date, :alphabet, :non_letters, :shifts,
-  :a, :b, :c, :d
+              :a, :b, :c, :d
 
   def initialize(message, key, date)
     @message = message
@@ -23,7 +23,7 @@ class Encryption
   end
 
   def get_offsets
-    squared = @date.to_i ** 2
+    squared = @date.to_i**2
     last_four = squared.to_s.split('')
     offset = last_four.last(4).join
 
@@ -38,5 +38,13 @@ class Encryption
     @shifts << @b
     @shifts << @c
     @shifts << @d
+  end
+
+  def letter_index
+    @message.downcase.split(//).map do |letter|
+      if @alphabet.include?(letter)
+        @alphabet.index(letter)
+      end
+    end
   end
 end
