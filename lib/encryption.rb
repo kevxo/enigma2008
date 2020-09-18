@@ -51,4 +51,16 @@ class Encryption
     @shifts << @shifts.dup if @shifts.length != letter_index.length
     @shifts.flatten
   end
+
+  def encode
+    array = []
+    new_shifts_array.each_with_index do |key, indx1|
+      letter_index.each_with_index do|num, indx2|
+        if indx1 == indx2
+          array << (key + num) % 27
+        end
+      end
+    end
+    array
+  end
 end
