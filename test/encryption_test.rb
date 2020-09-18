@@ -72,4 +72,17 @@ class EncryptionTest < Minitest::Test
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
     assert_equal expected, encryption.encode
   end
+
+  def test_it_can_return_translation
+    encryption = Encryption.new('hello world', '02715', '040895')
+
+    encryption.get_keys
+    encryption.get_offsets
+    encryption.add_shift
+    encryption.letter_index
+    encryption.new_shifts_array
+    encryption.encode
+
+    assert_equal 'keder ohulw', encryption.translation
+  end
 end
