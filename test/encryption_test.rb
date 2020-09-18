@@ -42,4 +42,11 @@ class EncryptionTest < Minitest::Test
 
     assert_equal [3, 27, 73, 20], encryption.shifts
   end
+
+  def test_returns_letter_index_in_alphabet
+    encryption = Encryption.new('hello world', '02715', '040895')
+
+    expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
+    assert_equal expected, encryption.letter_index
+  end
 end
