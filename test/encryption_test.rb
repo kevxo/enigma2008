@@ -37,5 +37,9 @@ class EncryptionTest < Minitest::Test
     assert_equal 27, encryption.b
     assert_equal 73, encryption.c
     assert_equal 20, encryption.d
+
+    encryption.add_shift
+
+    assert_equal [3, 27, 73, 20], encryption.shifts
   end
 end
