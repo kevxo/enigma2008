@@ -15,7 +15,6 @@ class EncryptionTest < Minitest::Test
     assert_equal '02715', encryption.key
     assert_equal '040895', encryption.date
     assert_equal 27, encryption.alphabet.count
-    assert_equal [], encryption.non_letters
     assert_equal [], encryption.shifts
     assert_equal 0, encryption.a
     assert_equal 0, encryption.b
