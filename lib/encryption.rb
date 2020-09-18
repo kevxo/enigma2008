@@ -1,5 +1,5 @@
 class Encryption
-  attr_reader :message, :key, :date, :alphabet, :non_letters, :shifts,
+  attr_reader :message, :key, :date, :alphabet, :shifts,
               :a, :b, :c, :d
 
   def initialize(message, key, date)
@@ -7,7 +7,6 @@ class Encryption
     @key = key
     @date = date
     @alphabet = ('a'..'z').to_a << ' '
-    @non_letters = []
     @shifts = []
     @a = 0
     @b = 0
