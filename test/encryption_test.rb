@@ -85,4 +85,17 @@ class EncryptionTest < Minitest::Test
 
     assert_equal 'keder ohulw', encryption.translation
   end
+
+  def test_it_works_when_message_is_capital
+    encryption = Encryption.new('HELLO WORLD', '02715', '040895')
+
+    encryption.get_keys
+    encryption.get_offsets
+    encryption.add_shift
+    encryption.letter_index
+    encryption.new_shifts_array
+    encryption.encode
+
+    assert_equal 'keder ohulw', encryption.translation
+  end
 end
