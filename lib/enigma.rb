@@ -7,6 +7,12 @@ class Enigma
     new_date
   end
 
+  def generate_key
+    key = rand(1000..9999)
+    generate = key.to_s.insert(0, '0')
+    generate
+  end
+
   def encrypt(message, key = nil, date = nil)
     hash = {}
     @encryption = Encryption.new(message, key, date)
