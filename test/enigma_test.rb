@@ -28,6 +28,13 @@ class EnigmaTest < Minitest::Test
     assert_equal '190920', enigma.generate_date
   end
 
+  def test_it_generates_keys
+    enigma = Enigma.new
+    enigma.stubs(:rand).returns(7018)
+
+    assert_equal '07018', enigma.generate_key
+  end
+
   def test_it_encrypts_with_todays_date
     enigma = Enigma.new
     today = Date.today
