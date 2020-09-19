@@ -49,4 +49,14 @@ class DecryptionTest < Minitest::Test
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
     assert_equal expected, decryption.cipher_letter_index
   end
+
+  def test_it_returns_array_shifts
+    decryption = Decryption.new('keder ohulw', '02715', '040895')
+    decryption.get_keys
+    decryption.get_offsets
+    decryption.add_shift
+    decryption.cipher_letter_index
+
+    assert_equal 8, decryption.new_shifts_array.count
+  end
 end
