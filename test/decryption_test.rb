@@ -72,4 +72,17 @@ class DecryptionTest < Minitest::Test
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
     assert_equal expected, decryption.decode
   end
+
+  def test_it_translates_cipher
+    decryption = Decryption.new('keder ohulw', '02715', '040895')
+
+    decryption.get_keys
+    decryption.get_offsets
+    decryption.add_shift
+    decryption.cipher_letter_index
+    decryption.new_shifts_array
+    decryption.decode
+
+    assert_equal 'hello world', decryption.translate_cipher
+  end
 end
