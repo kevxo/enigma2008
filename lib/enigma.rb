@@ -1,9 +1,10 @@
 require 'date'
 
 class Enigma
-  attr_reader :crypted
+  attr_reader :crypted, :decrypted
   def initialize
     @crypted = {}
+    @decrypted = {}
   end
 
   def generate_date
@@ -30,5 +31,19 @@ class Enigma
     @crypted[:key] = key
     @crypted[:date] = date
     @crypted
+  end
+
+  def decrypt(cypher_text, key, date = generate_date)
+    decryption = Decryption.new(cypher_text, key, date)
+    decryption.get_keys
+    decryption.get_offsets
+    decryption.add_shift
+    decryption.cipher_letter_index
+    decryption.new_shifts_array
+    decryption.decode
+    @decrypted[:decryption] = decryption.translate_cipher
+    @decrypted[:key] = key
+    @decrypted[:date] = date
+    @decrypted
   end
 end
