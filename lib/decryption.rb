@@ -17,7 +17,7 @@ class Decryption
   end
 
   def cipher_letter_index
-    @cipher_text.split(//).map do |letter|
+    @cipher_text.downcase.split(//).map do |letter|
       @alphabet.index(letter)
     end
   end
@@ -37,5 +37,14 @@ class Decryption
       end
     end
     array
+  end
+
+  def translate_cipher
+    message = ''
+    translate = decode.map do |letter|
+      @alphabet[letter]
+    end.join
+    message += translate
+    message
   end
 end
