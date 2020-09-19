@@ -21,4 +21,9 @@ class Decryption
       @alphabet.index(letter)
     end
   end
+
+  def new_shifts_array
+    @shifts << @shifts.dup if @shifts.length != cipher_letter_index.length
+    @shifts.flatten
+  end
 end
