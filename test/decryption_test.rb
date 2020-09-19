@@ -42,4 +42,11 @@ class DecryptionTest < Minitest::Test
 
     assert_equal [3, 27, 73, 20], decryption.shifts
   end
+
+  def test_it_returns_cihper_letter_index
+    decryption = Decryption.new('keder ohulw', '02715', '040895')
+
+    expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
+    assert_equal expected, decryption.cipher_letter_index
+  end
 end
