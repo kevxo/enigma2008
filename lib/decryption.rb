@@ -15,4 +15,10 @@ class Decryption
     @c = 0
     @d = 0
   end
+
+  def cipher_letter_index
+    @cipher_text.split(//).map do |letter|
+      @alphabet.index(letter)
+    end
+  end
 end
