@@ -13,9 +13,9 @@ class EnigmaTest < Minitest::Test
   def test_it_encrypts_with_date_and_key
     enigma = Enigma.new
     expected = {
-      encryption: "keder ohulw",
-      key: "02715",
-      date: "040895"
+      encryption: 'keder ohulw',
+      key: '02715',
+      date: '040895'
     }
 
     assert_equal expected, enigma.encrypt('hello world', '02715', '040895')
@@ -38,7 +38,7 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     Date.stubs(:today).returns(Date.new(2020, 9, 19))
     expected = {
-      encryption: "pib wdmczpu",
+      encryption: 'pib wdmczpu',
       key: '02715',
       date: '190920'
     }
@@ -51,11 +51,22 @@ class EnigmaTest < Minitest::Test
     enigma.stubs(:rand).returns(7018)
     Date.stubs(:today).returns(Date.new(2020, 9, 19))
     expected = {
-      encryption: "uymcatxfdee",
+      encryption: 'uymcatxfdee',
       key: '07018',
       date: '190920'
     }
 
     assert_equal expected, enigma.encrypt('hello world')
+  end
+
+  def test_decrypts_with_key_and_date
+    enigma = Enigma.new
+    expected = {
+      decryption: 'hello world',
+      key: '02715',
+      date: '040895'
+    }
+
+    assert_equal expected, enigma.decrypt('keder ohulw', '02715', '040895')
   end
 end
