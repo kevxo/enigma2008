@@ -1,4 +1,7 @@
+require_relative 'shiftable'
+
 class Decryption
+  include Shiftable
   attr_reader :cipher_text, :key, :date, :alphabet, :shifts,
   :a, :b, :c, :d
   def initialize(cipher_text, key, date)
