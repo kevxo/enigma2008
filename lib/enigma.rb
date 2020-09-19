@@ -1,4 +1,12 @@
+require 'date'
+
 class Enigma
+  def generate_date
+    today = Date.today
+    new_date = today.strftime('%d/%m/%Y').delete('/')[0..5]
+    new_date
+  end
+
   def encrypt(message, key = nil, date = nil)
     hash = {}
     @encryption = Encryption.new(message, key, date)
