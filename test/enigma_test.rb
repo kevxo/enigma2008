@@ -19,6 +19,20 @@ class EnigmaTest < Minitest::Test
       date: '040895'
     }
 
-    assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+    assert_equal expected, enigma.encrypt('hello world', '02715', '040895')
+  end
+
+  def test_it_encrypts_with_todays_date
+    enigma = Enigma.new
+    today = Date.today
+    new_date = today.strftime('%d/%m/%Y').delete('/')[0..5]
+
+    expected = {
+      encryption: 'pib wdmczpu',
+      key: '02715',
+      date: new_date
+    }
+
+    assert_equal expected, enigma.encrypt('hello world', '02715', new_date)
   end
 end
