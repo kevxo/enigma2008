@@ -35,4 +35,22 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, enigma.encrypt('hello world', '02715', new_date)
   end
+
+  def test_encrypts_with_todays_date_and_new_key
+    enigma = Enigma.new
+    today = Date.today
+    new_date = today.strftime('%d/%m/%Y').delete('/')[0..5]
+    keys = [0]
+    key = (1..9).to_a.rotate.shift(4)
+    keys << key
+    generatred_keys = keys.flatten.join
+
+    expected = {
+      encryption: 'pescw cfzlk',
+      key: generatred_keys,
+      date: new_date
+    }
+
+    assert_equal expected, enigma.encrypt('hello world', generatred_keys, new_date)
+  end
 end
