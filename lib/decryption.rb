@@ -26,4 +26,16 @@ class Decryption
     @shifts << @shifts.dup if @shifts.length != cipher_letter_index.length
     @shifts.flatten
   end
+
+  def decode
+    array = []
+    new_shifts_array.each_with_index do |key, indx1|
+      cipher_letter_index.each_with_index do|num, indx2|
+        if indx1 == indx2
+          array << (num - key) % 27
+        end
+      end
+    end
+    array
+  end
 end
