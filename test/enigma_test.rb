@@ -93,4 +93,16 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, enigma.crack('vjqtbeaweqihssi', '291018')
   end
+
+  def test_it_returns_hash_when_cracked_with_generated_date
+    enigma = Enigma.new
+    Date.stubs(:today).returns(Date.new(2020, 9, 21))
+    expected = {
+      decryption: 'hello world end',
+      date: '210920',
+      key: '08158'
+    }
+
+    assert_equal expected, enigma.crack('vjqtbeaweqihssi')
+  end
 end
