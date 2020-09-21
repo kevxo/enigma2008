@@ -32,4 +32,10 @@ class CrackTest < Minitest::Test
 
     assert_equal [26, 4, 13, 3], crack.given_letter_indexes
   end
+
+  def test_it_returns_array_possible_keys
+    crack = Crack.new('vjqtbeaweqihssi', '291018')
+
+    assert_equal [-19, 14, 5, 5], crack.array_of_possible_keys
+  end
 end
