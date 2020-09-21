@@ -27,4 +27,16 @@ class Crack
       alphabet.index(letter)
     end
   end
+
+  def array_of_possible_keys
+    array = []
+    letter_index_of_cipher.each_with_index do |letter, index1|
+      given_letter_indexes.each_with_index do |given, index2|
+        if index1 == index2
+          array << (letter - given)
+        end
+      end
+    end
+    array
+  end
 end
