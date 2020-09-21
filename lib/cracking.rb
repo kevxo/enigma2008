@@ -52,4 +52,25 @@ class Crack
     end
     @shifts.rotate
   end
+
+  def get_offsets
+    squared = @date.to_i**2
+    last_four = squared.to_s.split('')
+    offsets = last_four.last(4).flatten
+    offsets.each do |offset|
+      @offsets << offset.to_i
+    end
+    @offsets
+  end
+
+  def get_keys
+    our_shifts_used.each_with_index do |shift, indx1|
+      offsets.each_with_index do |offset, indx2|
+        if indx1 == indx2
+          @keys << shift - offset
+        end
+      end
+    end
+    @keys
+  end
 end
