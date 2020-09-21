@@ -44,4 +44,11 @@ class CrackTest < Minitest::Test
 
     assert_equal [14, 5, 5, 8], crack.our_shifts_used
   end
+
+  def test_it_returns_array_of_keys
+    crack = Crack.new('vjqtbeaweqihssi', '291018')
+
+    assert_equal [6, 3, 2, 4], crack.get_offsets
+    assert_equal [8, 2, 3, 4], crack.get_keys
+  end
 end
