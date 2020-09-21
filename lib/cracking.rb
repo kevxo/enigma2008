@@ -1,11 +1,13 @@
 class Crack
   attr_reader :cipher_message, :date, :alphabet, :shifts,
-              :a, :b, :c, :d
+              :a, :b, :c, :d, :offsets, :keys
   def initialize(cipher_message, date)
     @cipher_message = cipher_message
     @date = date
     @alphabet = ('a'..'z').to_a << ' '
     @shifts = []
+    @offsets = []
+    @keys = []
     @a = 0
     @b = 0
     @c = 0
@@ -38,5 +40,16 @@ class Crack
       end
     end
     array
+  end
+
+  def our_shifts_used
+    array_of_possible_keys.each do |letter|
+      if letter < 0
+        @shifts << letter % 27
+      else
+        @shifts << letter
+      end
+    end
+    @shifts.rotate
   end
 end
