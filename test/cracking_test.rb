@@ -20,4 +20,10 @@ class CrackTest < Minitest::Test
     assert_equal 0, crack.c
     assert_equal 0, crack.d
   end
+
+  def test_it_returns_last_four_letters_of_cipher_index
+    crack = Crack.new('vjqtbeaweqihssi', '291018')
+
+    assert_equal [7, 18, 18, 8], crack.letter_index_of_cipher
+  end
 end
