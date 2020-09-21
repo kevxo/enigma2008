@@ -1,7 +1,7 @@
 require 'date'
 
 class Enigma
-  attr_reader :crypted, :decrypted
+  attr_reader :crypted, :decrypted, :cracked
   def initialize
     @crypted = {}
     @decrypted = {}
