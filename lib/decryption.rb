@@ -17,14 +17,14 @@ class Decryption
   end
 
   def cipher_letter_index
-    @cipher_text.downcase.split(//).map do |letter|
+    @cipher_text.downcase.split('').map do |letter|
       @alphabet.index(letter)
     end
   end
 
   def new_shifts_array
     @shifts << @shifts.dup if @shifts.length != cipher_letter_index.length
-    @shifts.flatten
+    @shifts.flatten.shift(@cipher_text.length)
   end
 
   def decode
