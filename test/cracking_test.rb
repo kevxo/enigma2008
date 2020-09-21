@@ -26,4 +26,10 @@ class CrackTest < Minitest::Test
 
     assert_equal [7, 18, 18, 8], crack.letter_index_of_cipher
   end
+
+  def test_it_returns_array_of_index_values_from_given
+    crack = Crack.new('vjqtbeaweqihssi', '291018')
+
+    assert_equal [26, 4, 13, 3], crack.given_letter_indexes
+  end
 end
