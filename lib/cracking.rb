@@ -53,7 +53,7 @@ class Crack
     @shifts.rotate
   end
 
-  def get_offsets
+  def obtain_offsets
     squared = @date.to_i**2
     last_four = squared.to_s.split('')
     offsets = last_four.last(4).flatten
@@ -63,7 +63,7 @@ class Crack
     @offsets
   end
 
-  def get_keys
+  def obtain_keys
     our_shifts_used.each_with_index do |shift, indx1|
       offsets.each_with_index do |offset, indx2|
         if indx1 == indx2
@@ -72,5 +72,37 @@ class Crack
       end
     end
     @keys
+  end
+
+  def cipher_letter_index
+    @cipher_message.downcase.split('').map do |letter|
+      @alphabet.index(letter)
+    end
+  end
+
+  def new_shifts_array
+    our_shifts_used << our_shifts_used.dup if our_shifts_used.length != cipher_letter_index.length
+    our_shifts_used.flatten.shift(@cipher_message.length)
+  end
+
+  def decode
+    array = []
+    new_shifts_array.each_with_index do |key, indx1|
+      cipher_letter_index.each_with_index do |num, indx2|
+        if indx1 == indx2
+          array << (num - key) % 27
+        end
+      end
+    end
+    array
+  end
+
+  def translate_cipher
+    message = ''
+    translate = decode.map do |letter|
+      @alphabet[letter]
+    end.join
+    message += translate
+    message
   end
 end
