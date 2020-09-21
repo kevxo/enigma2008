@@ -20,6 +20,7 @@ class EncryptionTest < Minitest::Test
     assert_equal 0, encryption.b
     assert_equal 0, encryption.c
     assert_equal 0, encryption.d
+    assert_equal '', encryption.special_characters
   end
 
   def test_it_returns_shifts
@@ -42,6 +43,15 @@ class EncryptionTest < Minitest::Test
     assert_equal [3, 27, 73, 20], encryption.shifts
   end
 
+  def test_returns_letter_array
+    encryption = Encryption.new('hello world', '02715', '040895')
+    encryption2 = Encryption.new('hello world!', '02715', '040895')
+
+    expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+    assert_equal expected, encryption.letter_array
+    assert_equal expected, encryption2.letter_array
+  end
+
   def test_returns_letter_index_in_alphabet
     encryption = Encryption.new('hello world', '02715', '040895')
 
@@ -57,7 +67,7 @@ class EncryptionTest < Minitest::Test
     encryption.add_shift
     encryption.letter_index
 
-    assert_equal 8, encryption.new_shifts_array.count
+    assert_equal [3, 27, 73, 20, 3, 27, 73, 20], encryption.new_shifts_array
   end
 
   def test_it_returns_array_to_encrypt
@@ -97,5 +107,18 @@ class EncryptionTest < Minitest::Test
     encryption.encode
 
     assert_equal 'keder ohulw', encryption.translation
+  end
+
+  def test_it_works_when_message_is_has_special_character
+    encryption = Encryption.new('hello world!', '02715', '040895')
+
+    encryption.get_keys
+    encryption.get_offsets
+    encryption.add_shift
+    encryption.letter_index
+    encryption.new_shifts_array
+    encryption.encode
+
+    assert_equal 'keder ohulw!', encryption.translation
   end
 end
