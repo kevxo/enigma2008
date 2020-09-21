@@ -1,5 +1,4 @@
 require_relative 'test_helper'
-require './lib/encryption'
 require './lib/decryption'
 
 class DecryptionTest < Minitest::Test
@@ -57,7 +56,7 @@ class DecryptionTest < Minitest::Test
     decryption.add_shift
     decryption.cipher_letter_index
 
-    assert_equal 8, decryption.new_shifts_array.count
+    assert_equal [3, 27, 73, 20, 3, 27, 73, 20], decryption.new_shifts_array
   end
 
   def test_it_decodes
