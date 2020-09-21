@@ -11,4 +11,12 @@ class Crack
     @c = 0
     @d = 0
   end
+
+  def letter_index_of_cipher
+    last_four = @cipher_message.split('')
+    letters = last_four.last(4)
+    letters.map do |letter|
+      alphabet.index(letter)
+    end
+  end
 end
