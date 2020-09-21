@@ -5,6 +5,7 @@ class Enigma
   def initialize
     @crypted = {}
     @decrypted = {}
+    @cracked = {}
   end
 
   def generate_date
@@ -45,5 +46,22 @@ class Enigma
     @decrypted[:key] = key
     @decrypted[:date] = date
     @decrypted
+  end
+
+  def crack(cipher_message, date = generate_date)
+    crack = Crack.new(cipher_message, date)
+    crack.letter_index_of_cipher
+    crack.given_letter_indexes
+    crack.array_of_possible_keys
+    crack.our_shifts_used
+    crack.obtain_offsets
+    crack.obtain_keys
+    crack.cipher_letter_index
+    crack.new_shifts_array
+    crack.decode
+    @cracked[:decryption] = crack.translate_cipher
+    @cracked[:date] = date
+    @cracked[:key] = crack.obtain_keys.shift(4).join.to_s.insert(0, '0')
+    @cracked
   end
 end
