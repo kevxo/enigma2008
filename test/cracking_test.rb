@@ -14,11 +14,6 @@ class CrackTest < Minitest::Test
     assert_equal 'vjqtbeaweqihssi', crack.cipher_message
     assert_equal '291018', crack.date
     assert_equal 27, crack.alphabet.count
-    assert_equal [], crack.shifts
-    assert_equal 0, crack.a
-    assert_equal 0, crack.b
-    assert_equal 0, crack.c
-    assert_equal 0, crack.d
   end
 
   def test_it_returns_last_four_letters_of_cipher_index
@@ -36,13 +31,13 @@ class CrackTest < Minitest::Test
   def test_it_returns_array_possible_keys
     crack = Crack.new('vjqtbeaweqihssi', '291018')
 
-    assert_equal [-19, 14, 5, 5], crack.array_of_possible_keys
+    assert_equal [-19, 14, 5, 5], crack.array_of_actual_shifts
   end
 
   def test_it_returns_array_of_shifts
     crack = Crack.new('vjqtbeaweqihssi', '291018')
 
-    assert_equal [14, 5, 5, 8], crack.our_shifts_used
+    assert_equal [-19, 14, 5, 5], crack.array_of_actual_shifts
   end
 
   def test_it_returns_array_of_keys
@@ -61,7 +56,6 @@ class CrackTest < Minitest::Test
 
   def test_it_returns_array_shifts
     crack = Crack.new('vjqtbeaweqihssi', '291018')
-    crack.cipher_letter_index
 
     assert_equal [14, 5, 5, 8, 14, 5, 5, 8, 14, 5, 5, 8, 14, 5, 5], crack.new_shifts_array
   end
@@ -69,19 +63,12 @@ class CrackTest < Minitest::Test
   def test_it_decodes
     crack = Crack.new('vjqtbeaweqihssi', '291018')
 
-    crack.cipher_letter_index
-    crack.new_shifts_array
-
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3, 26, 4, 13, 3]
     assert_equal expected, crack.decode
   end
 
   def test_it_translates_cipher
     crack = Crack.new('vjqtbeaweqihssi', '291018')
-
-    crack.cipher_letter_index
-    crack.new_shifts_array
-    crack.decode
 
     assert_equal 'hello world end', crack.translate_cipher
   end
