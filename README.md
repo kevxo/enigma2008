@@ -12,7 +12,7 @@
     I broke down my project in four classes: Encryption, Decryption, Cracking, and Enigma.
 
 ### Ruby Coventions
-  - For ruby convention I was able to make classes that made sense and used correct syntax and    indentation. One thing for sure is I have three methods that are more than ten lines long. Most enumerables that I chose made sense on why I used them. The only time I used a hash is when I created
+  - For ruby convention I was able to make classes that made sense and used correct syntax and indentation.  Most enumerables that I chose made sense on why I used them. The only time I used a hash is when I created
   one for encrypt, decrypt, and crack. I used arrays because I found it to make more sense to use.
 
 ### Test Driven Development
@@ -34,7 +34,7 @@
 ### Object Oriented Programming - 4
 
 
-### Ruby Coventions - 3
+### Ruby Coventions - 4
 
 
 ### Test Driven Development - 4
