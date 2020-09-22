@@ -8,9 +8,9 @@ decryption = ARGV[1]
 key = ARGV[2]
 date = ARGV[3]
 file = File.open("#{encryption}", 'r')
-encryption = file.readlines
+encryption = file.readlines.join('').chomp
 
-data = enigma.decrypt(encryption[0], key, date)
+data = enigma.decrypt(encryption, key, date)
 decrypt_file = File.open("#{decryption}", 'w')
 decrypt_file.write(data[:decryption])
 decrypt_file.close
