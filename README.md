@@ -12,12 +12,7 @@
     I broke down my project in four classes: Encryption, Decryption, Cracking, and Enigma.
 
 ### Ruby Coventions
-<<<<<<< HEAD
-  - For ruby convention I was able to make classes that made sense and used correct syntax and indentation.  Most enumerables that I chose made sense on why I used them. The only time I used a hash is when I created
-=======
-  - For ruby convention I was able to make classes that made sense and used correct syntax and indentation. Most enumerables that I chose made sense on why I used them. The only time I used a hash is when I created
->>>>>>> 99814de0f46f5f560cdca0d8539e9a9e6be99caa
-  one for encrypt, decrypt, and crack. I used arrays because I found it to make more sense to use.
+  - For ruby convention I was able to make classes that made sense and used correct syntax and indentation.  Most enumerables that I chose made sense on why I used them. The only time I used a hash is when I created.
 
 ### Test Driven Development
   - For TDD I was able to use stubs. The stubs I used were for date generator and key generator since
