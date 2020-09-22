@@ -12,7 +12,11 @@
     I broke down my project in four classes: Encryption, Decryption, Cracking, and Enigma.
 
 ### Ruby Coventions
+<<<<<<< HEAD
   - For ruby convention I was able to make classes that made sense and used correct syntax and indentation.  Most enumerables that I chose made sense on why I used them. The only time I used a hash is when I created
+=======
+  - For ruby convention I was able to make classes that made sense and used correct syntax and indentation. Most enumerables that I chose made sense on why I used them. The only time I used a hash is when I created
+>>>>>>> 99814de0f46f5f560cdca0d8539e9a9e6be99caa
   one for encrypt, decrypt, and crack. I used arrays because I found it to make more sense to use.
 
 ### Test Driven Development
@@ -21,7 +25,7 @@
 
 
 ### Version Control
-  - For version control I was able to make 84 commits which is far more enough than the required.
+  - For version control I was able to make 89 commits which is far more enough than the required.
     I also made 10 pull requests which was a lot more than the required. I organized my project in 5 different parts : Encryption, Decryption, Cracking, Enigma and Command Line Interface. Each part represents a class or a step working towards the interaction pattern. This helped me keep in line of how I wanted to approach this project in the correct manner.
 
 
