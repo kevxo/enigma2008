@@ -17,7 +17,7 @@
 
 ### Test Driven Development
   - For TDD I was able to use stubs. The stubs I used were for date generator and key generator since
-    they both resulted in randomness everytime I tested. I also tested obvious edge caseses like capitaliziation and the implementaion of special characters or with and without date or keys. My test coverage result is 100% with 414/414 lines covered.
+    they both resulted in randomness everytime I tested. I also tested obvious edge caseses like capitaliziation and the implementaion of special characters or with and without date or keys. My test coverage result is 100% with 256/256 lines covered.
 
 
 ### Version Control
