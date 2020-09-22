@@ -31,6 +31,7 @@ class Enigma
   end
 
   def decrypt(cypher_text, key, date = generate_date)
+    date = generate_date if date.nil?
     decryption = Decryption.new(cypher_text, key, date)
     @decrypted[:decryption] = decryption.decode
     @decrypted[:key] = key
