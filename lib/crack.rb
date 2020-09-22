@@ -9,9 +9,9 @@ crack = ARGV[1]
 date = ARGV[2]
 
 file = File.open("#{encryption}", 'r')
-encryption = file.readlines
+encryption = file.readlines.join('').chomp
 
-data = enigma.crack(encryption[0], date)
+data = enigma.crack(encryption, date)
 crack_file = File.open("#{crack}", 'w')
 crack_file.write(data[:decryption])
 crack_file.close
