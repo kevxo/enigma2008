@@ -1,4 +1,6 @@
 require 'date'
+require_relative 'decryption'
+require_relative 'encryption'
 
 class Enigma
   attr_reader :crypted, :decrypted
